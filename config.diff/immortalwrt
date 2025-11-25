@@ -132,3 +132,6 @@ CONFIG_PACKAGE_luci-app-vlmcsd=y
 CONFIG_PACKAGE_luci-app-wechatpush=y
 CONFIG_PACKAGE_luci-app-zerotier=y
 CONFIG_PACKAGE_luci-app-package-manager=y
+
+# 关闭部分默认插件
+# CONFIG_PACKAGE_luci-app-attendedsysupgrade is not set
