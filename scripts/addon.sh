@@ -95,7 +95,7 @@ git_sparse_clone https://github.com/sirpdboy/luci-app-timecontrol -d mypackages 
 git_sparse_clone https://github.com/Lienol/openwrt-package -d mypackages luci-app-socat luci-app-control-weburl luci-app-control-webrestriction luci-app-timecontrol
 
 # =============================================================================
-# 分支特定配置（依赖环境变量 BRANCH）
+# 分支特定配置（依赖环境变量 REPO_NAME）
 # =============================================================================
 if [ "$REPO_NAME" = "lede" ]; then
     echo "暂无"
