@@ -117,17 +117,17 @@ applications=feeds/luci/applications
 # =============================================================================
 # 分支特定配置（依赖环境变量 BRANCH）
 # =============================================================================
-if [ "$BRANCH" = "lede" ]; then
+if [ "$REPO_NAME" = "lede" ]; then
     defaultsettings=package/lean/default-settings
     sed -i '/aria2.lua/,/samba4.json/d' "${defaultsettings}/files/zzz-default-settings"
     sed -i 's/LEDE /LEDE Build By ViS0N /' "${defaultsettings}/files/zzz-default-settings"
 
-elif [ "$BRANCH" = "immortalwrt" ]; then
+elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
     sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" "${package_etc}/banner"
     sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "${package_etc}/openwrt_release"
 
-elif [ "$BRANCH" = "openwrt" ]; then
+elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
 fi
 
