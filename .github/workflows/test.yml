@@ -149,5 +149,5 @@ jobs:
             echo >> .config
             cat wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE >> .config
           fi
-          ls -a files 
+          ls -a wrt 
           cat package\base-files\files\etc\banner
