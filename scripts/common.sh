@@ -114,7 +114,7 @@ applications=feeds/luci/applications
 
 
 # =============================================================================
-# 分支特定配置（依赖环境变量 BRANCH）
+# 分支特定配置（依赖环境变量 REPO_NAME）
 # =============================================================================
 if [ "$REPO_NAME" = "lede" ]; then
     defaultsettings=package/lean/default-settings
