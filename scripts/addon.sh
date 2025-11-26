@@ -97,13 +97,13 @@ git_sparse_clone https://github.com/Lienol/openwrt-package -d mypackages luci-ap
 # =============================================================================
 # 分支特定配置（依赖环境变量 BRANCH）
 # =============================================================================
-if [ "$BRANCH" = "lede" ]; then
+if [ "$REPO_NAME" = "lede" ]; then
     echo "暂无"
 
-elif [ "$BRANCH" = "immortalwrt" ]; then
+elif [ "$REPO_NAME" = "immortalwrt" ]; then
     echo "暂无"
 
-elif [ "$BRANCH" = "openwrt" ]; then
+elif [ "$REPO_NAME" = "openwrt" ]; then
     git_sparse_clone https://github.com/immortalwrt/immortalwrt -d package/default-settings package/emortal/default-settings
 fi
 
