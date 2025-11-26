@@ -150,4 +150,4 @@ jobs:
             cat wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE >> .config
           fi
           ls -a wrt 
-          cat package\base-files\files\etc\banner
+          cat package/base-files/files/etc/banner
