@@ -15,6 +15,10 @@
 
 3. 增减插件需自行修改scripts/addon.sh和config.diff目录下相关文件
 
+## ⚠️ 警告⚠️ 
+
+<span style="color:red">Openwrt固件没做任何本地优化，在线编译时可能不成功！</span>
+
 ## 固件信息
 
 1. 固件默认地址：192.168.10.1
