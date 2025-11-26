@@ -123,8 +123,9 @@ if [ "$BRANCH" = "lede" ]; then
     sed -i 's/LEDE /LEDE Build By ViS0N /' "${defaultsettings}/files/zzz-default-settings"
 
 elif [ "$BRANCH" = "immortalwrt" ]; then
-    sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" "files/etc/banner"
-    sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "package/base-files/files/etc/openwrt_release"
+    package_etc=package/base-files/files/etc
+    sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" "${package_etc}/banner"
+    sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "${package_etc}/openwrt_release"
 
 elif [ "$BRANCH" = "openwrt" ]; then
     echo "暂无"
