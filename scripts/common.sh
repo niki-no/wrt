@@ -6,9 +6,9 @@
 # =============================================================================
 
 # --- 基础系统定制 ---
+sed -i "s/tty\(0\|1\)::askfirst/tty\1::respawn/g" "target/linux/*/base-files/etc/inittab"
 sed -i 's/192.168.1.1/192.168.10.1/g' "package/base-files/files/bin/config_generate"
 sed -i 's/%D %V, %C/%D %V, %C, Build By ViS0N/g' "package/base-files/files/etc/banner"
-sed -i "s/tty\(0\|1\)::askfirst/tty\1::respawn/g" "target/linux/*/base-files/etc/inittab"
 sed -i '/export ENV=\/etc\/shinit/a\LANG=zh_CN.UTF-8\nLC_ALL=zh_CN.UTF-8' "package/base-files/files/etc/profile"
 
 # --- LuCI 基础模块翻译优化 ---
