@@ -78,7 +78,6 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-wechatpush" ] && grep -rl '\bservices\b' ${applications}/luci-app-wechatpush | xargs -r sed -i 's/\bservices\b/vpn/g'
 
 [ -d "${applications}/luci-app-cifs-mount" ] && grep -rl '\bnas\b' ${applications}/luci-app-cifs-mount | xargs -r sed -i 's/\bnas\b/services/g'
-[ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
 
 [ -d "${applications}/luci-app-zerotier" ] && sed -i 's/msgstr "ZeroTier"/msgstr "内网穿透"/g' ${applications}/luci-app-zerotier/po/zh_Hans/zerotier.po
 [ -d "${applications}/luci-app-zerotier" ] && grep -rl '\bservices\b' ${applications}/luci-app-zerotier | xargs -r sed -i 's/\bservices\b/vpn/g'
@@ -121,10 +120,14 @@ if [ "$REPO_NAME" = "lede" ]; then
     sed -i 's/LEDE /LEDE Build By ViS0N /' "${defaultsettings}/files/zzz-default-settings"
     sed -i 's/%D %V, %C/%D %V, %C, Build By ViS0N/g' "${package_etc}/banner"
 
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
+
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
     sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" "${package_etc}/banner"
     sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "${package_etc}/openwrt_release"
+
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
