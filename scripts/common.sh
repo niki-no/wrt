@@ -64,8 +64,8 @@ applications=feeds/luci/applications
 
 # USB 打印服务
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/44/43/g' ${applications}/luci-app-usb-printer/luasrc/controller/usb_printer.lua
-[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bnas\b' ${applications}/luci-app-usb-printer | xargs sed -i 's/\bnas\b/services/g'
-[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bNAS\b' ${applications}/luci-app-usb-printer | xargs sed -i 's/\bNAS\b/Services/g'
+[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bnas\b' ${applications}/luci-app-usb-printer | xargs -r sed -i 's/\bnas\b/services/g'
+[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bNAS\b' ${applications}/luci-app-usb-printer | xargs -r sed -i 's/\bNAS\b/Services/g'
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\bUSB 打印服务器\b/打印服务/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\b网络存储\b/存储/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
 
