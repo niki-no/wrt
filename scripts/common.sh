@@ -51,7 +51,6 @@ applications=feeds/luci/applications
 
 # 调整菜单顺序（避免冲突）
 [ -d "${applications}/luci-app-filetransfer" ] && sed -i 's/89/88/g' ${applications}/luci-app-filetransfer/luasrc/controller/filetransfer.lua
-[ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
 
 # miniDLNA
 [ -d "${applications}/luci-app-minidlna" ] && sed -i "s/\bminiDLNA Settings\b/DLNA设置/" ${applications}/luci-app-minidlna/htdocs/luci-static/resources/view/minidlna.js
@@ -121,6 +120,7 @@ if [ "$REPO_NAME" = "lede" ]; then
     sed -i 's/%D %V, %C/%D %V, %C, Build By ViS0N/g' "${package_etc}/banner"
 
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
+    [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
@@ -128,6 +128,7 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "${package_etc}/openwrt_release"
 
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
+    [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
