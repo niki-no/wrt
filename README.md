@@ -17,7 +17,7 @@
 
 ## ⚠️ 警告⚠️ 
 
-<span style="color:red">Openwrt固件没做任何本地优化，在线编译时可能不成功！</span>
+<span style="color:red">Openwrt仓库固件没做任何本地优化，在线编译时可能不成功！</span>
 
 ## 固件信息
 
