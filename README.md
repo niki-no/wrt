@@ -4,7 +4,7 @@
 [![](https://img.shields.io/github/release-pre/niki-no/wrt.svg)](https://github.com/niki-no/wrt/releases)
 [![](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/niki-no/wrt)
 
-## 编译注意
+## 编译说明
 
 在线Github Actions编译Openwrt、Lean和Immortalwrt仓库固件，同步使用上游最新源码！
 如需同时编译多个固件，需要两个步骤：
