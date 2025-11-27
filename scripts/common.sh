@@ -7,12 +7,11 @@
 
 # --- 基础系统定制 ---
 sed -i "s/tty\(0\|1\)::askfirst/tty\1::respawn/g" target/linux/*/base-files/etc/inittab
-sed -i 's/\b192.168.1.1\b/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/\b192\.168\.1\.1\b/192.168.10.1/g' package/base-files/files/bin/config_generate
 sed -i '/export ENV=\/etc\/shinit/a\LANG=zh_CN.UTF-8\nLC_ALL=zh_CN.UTF-8' package/base-files/files/etc/profile
 
 # --- LuCI 基础模块翻译优化 ---
-modules=feeds/luci/modules
-base_po=${modules}/luci-base/po/zh_Hans/base.po
+base_po=feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 sed -i '$a\\nmsgid "VPN"\nmsgstr "酷软"' ${base_po}
 sed -i '/msgid "Hostnames"/{n;s/主机名/主机映射/;}' ${base_po}
@@ -65,8 +64,8 @@ applications=feeds/luci/applications
 
 # USB 打印服务
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/44/43/g' ${applications}/luci-app-usb-printer/luasrc/controller/usb_printer.lua
-[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\bnas\b/services/g' ${applications}/luci-app-usb-printer/luasrc/controller/usb_printer.lua
-[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\bNAS\b/Services/g' ${applications}/luci-app-usb-printer/luasrc/controller/usb_printer.lua
+[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bnas\b' ${applications}/luci-app-usb-printer | xargs sed -i 's/\bnas\b/services/g'
+[ -d "${applications}/luci-app-usb-printer" ] && grep -rl '\bNAS\b' ${applications}/luci-app-usb-printer | xargs sed -i 's/\bNAS\b/Services/g'
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\bUSB 打印服务器\b/打印服务/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/\b网络存储\b/存储/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
 
@@ -75,39 +74,39 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-nlbwmon" ] && sed -i 's/admin\/services\/nlbw/admin\/nlbw/g' ${applications}/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 
 # 菜单分类调整（批量替换 services 路径）
-[ -d "${applications}/luci-app-oaf" ] && sed -i 's/\bservices\b/control/g' $(grep -rl '\bservices\b' ${applications}/luci-app-oaf)
-[ -d "${applications}/luci-app-wechatpush" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-wechatpush)
+[ -d "${applications}/luci-app-oaf" ] && grep -rl '\bservices\b' ${applications}/luci-app-oaf | xargs -r sed -i 's/\bservices\b/control/g'
+[ -d "${applications}/luci-app-wechatpush" ] && grep -rl '\bservices\b' ${applications}/luci-app-wechatpush | xargs -r sed -i 's/\bservices\b/vpn/g'
 
-[ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\bnas\b/services/g' $(grep -rl '\bnas\b' ${applications}/luci-app-cifs-mount)
+[ -d "${applications}/luci-app-cifs-mount" ] && grep -rl '\bnas\b' ${applications}/luci-app-cifs-mount | xargs -r sed -i 's/\bnas\b/services/g'
 [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
 
 [ -d "${applications}/luci-app-zerotier" ] && sed -i 's/msgstr "ZeroTier"/msgstr "内网穿透"/g' ${applications}/luci-app-zerotier/po/zh_Hans/zerotier.po
-[ -d "${applications}/luci-app-zerotier" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-zerotier)
+[ -d "${applications}/luci-app-zerotier" ] && grep -rl '\bservices\b' ${applications}/luci-app-zerotier | xargs -r sed -i 's/\bservices\b/vpn/g'
 
 [ -d "${applications}/luci-app-accesscontrol" ] && sed -i 's/\b上网时间控制\b/时间控制/g' ${applications}/luci-app-accesscontrol/po/zh_Hans/mia.po
-[ -d "${applications}/luci-app-accesscontrol" ] && sed -i 's/\bservices\b/control/g' $(grep -rl '\bservices\b' ${applications}/luci-app-accesscontrol)
+[ -d "${applications}/luci-app-accesscontrol" ] && grep -rl '\bservices\b' ${applications}/luci-app-accesscontrol | xargs -r sed -i 's/\bservices\b/control/g'
 
-[ -d "${applications}/luci-app-unblockneteasemusic" ] && sed -i 's/\b解除网易云音乐播放限制\b/\b网易音乐\b/g' ${applications}/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
-[ -d "${applications}/luci-app-unblockneteasemusic" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-unblockneteasemusic)
+[ -d "${applications}/luci-app-unblockneteasemusic" ] && sed -i 's/\b解除网易云音乐播放限制\b/网易音乐/g' ${applications}/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
+[ -d "${applications}/luci-app-unblockneteasemusic" ] && grep -rl '\bservices\b' ${applications}/luci-app-unblockneteasemusic | xargs -r sed -i 's/\bservices\b/vpn/g'
 
-[ -d "${applications}/luci-app-watchcat" ] && sed -i 's/\bservices\b/system/g' $(grep -rl '\bservices\b' ${applications}/luci-app-watchcat)
+[ -d "${applications}/luci-app-watchcat" ] && grep -rl '\bservices\b' ${applications}/luci-app-watchcat | xargs -r sed -i 's/\bservices\b/system/g'
 [ -d "${applications}/luci-app-watchcat" ] && sed -i 's/msgstr "Watchcat"/msgstr "智能重启"/g' ${applications}/luci-app-watchcat/po/zh_Hans/watchcat.po
 
 # PassWall
 [ -d "${applications}/luci-app-passwall" ] && sed -i '/msgid "Pass Wall"/{n;s/PassWall/翻越长城/;}' ${applications}/luci-app-passwall/po/zh_Hans/passwall.po
 [ -d "${applications}/luci-app-passwall" ] && sed -i '/Pass Wall/s/-1/4/g' ${applications}/luci-app-passwall/luasrc/controller/passwall.lua
-[ -d "${applications}/luci-app-passwall" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-passwall)
+[ -d "${applications}/luci-app-passwall" ] && grep -rl '\bservices\b' ${applications}/luci-app-passwall | xargs -r sed -i 's/\bservices\b/vpn/g'
 
 # SmartDNS
 [ -d "${applications}/luci-app-smartdns" ] && sed -i '/msgid "SmartDNS"/{n;s/SmartDNS/DNS 加速/;}' ${applications}/luci-app-smartdns/po/zh_Hans/smartdns.po
-[ -d "${applications}/luci-app-smartdns" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-smartdns)
+[ -d "${applications}/luci-app-smartdns" ] && grep -rl '\bservices\b' ${applications}/luci-app-smartdns | xargs -r sed -i 's/\bservices\b/vpn/g'
 
 # Lucky
 [ -d "${applications}/luci-app-lucky" ] && sed -i 's/msgstr "Lucky"/msgstr "反向代理"/g' ${applications}/luci-app-lucky/po/zh_Hans/lucky.po
-[ -d "${applications}/luci-app-lucky" ] && sed -i 's/\bservices\b/vpn/g' $(grep -rl '\bservices\b' ${applications}/luci-app-lucky)
+[ -d "${applications}/luci-app-lucky" ] && grep -rl '\bservices\b' ${applications}/luci-app-lucky | xargs -r sed -i 's/\bservices\b/vpn/g'
 
 # Time/WOL 控制
-[ -d "${applications}/luci-app-control-timewol" ] && sed -i 's/\bcontrol\b/services/g' $(grep -rl '\bcontrol\b' ${applications}/luci-app-control-timewol)
+[ -d "${applications}/luci-app-control-timewol" ] && grep -rl '\bcontrol\b' ${applications}/luci-app-control-timewol | xargs -r sed -i 's/\bcontrol\b/services/g'
 
 # 实时流量
 [ -d "${applications}/luci-app-wrtbwmon" ] && sed -i 's/msgstr "流量监控"/msgstr "实时流量"/g' ${applications}/luci-app-wrtbwmon/po/zh_Hans/wrtbwmon.po
