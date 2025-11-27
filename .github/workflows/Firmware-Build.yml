@@ -4,7 +4,7 @@
 # 作者: vison.v   
 #=================================================  
 
-name: Openwrt-Firmware-Build
+name: Firmware-Build
 
 on:
   workflow_dispatch:
