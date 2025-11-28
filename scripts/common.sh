@@ -41,7 +41,7 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-turboacc" ] && sed -i 's/msgstr "Turbo ACC 网络加速"/msgstr "网络加速"/g' ${applications}/luci-app-turboacc/po/zh_Hans/turboacc.po
 [ -d "${applications}/luci-app-ttyd" ] && sed -i 's/msgstr "命令"/msgstr "命令终端"/g' ${applications}/luci-app-ttyd/po/zh_Hans/ttyd.po
 [ -d "${applications}/luci-app-tcpdump" ] && sed -i 's/"Tcpdump 流量监控"/"流量截取"/g' ${applications}/luci-app-tcpdump/po/zh_Hans/tcpdump.po
-[ -d "${applications}/luci-app-argon-config" ] && sed -i 's/"Argon 主题设置"/"主题设置"/g' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
+[ -d "${applications}/luci-app-argon-config" ] && sed -i '/msgid "Argon Config"/{n;s/"Argon 主题设置"/"主题设置"/;}' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
 [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
 
 # 调整菜单顺序（避免冲突）
