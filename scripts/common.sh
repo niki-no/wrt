@@ -29,7 +29,6 @@ themes=feeds/luci/themes
 # Bootstrap 主题：禁用斜体
 [ -d "${themes}/luci-theme-bootstrap" ] && sed -i '/\/\* Typography\.less/i em, i {font-style: normal !important;}\n' ${themes}/luci-theme-bootstrap/htdocs/luci-static/bootstrap/cascade.css
 
-
 # --- 应用插件翻译与菜单调整 ---
 applications=feeds/luci/applications
 
