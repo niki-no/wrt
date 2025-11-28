@@ -130,7 +130,7 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" ${package_files}/etc/banner
     sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" ${package_files}/etc/openwrt_release
     sed -i '/OPENWRT_RELEASE/d' ${package_files}/usr/lib/os-release
-    echo 'OPENWRT_RELEASE="ImmortalWrt Build By ViS0N R$(date +%y.%m.%d)"' >> ${package_files}/usr/lib/os-release
+    echo "OPENWRT_RELEASE=\"ImmortalWrt Build By ViS0N R$(date +%y.%m.%d)\"" >> ${package_files}/usr/lib/os-release
 
     # Argon 主题：禁用斜体 + 添加页脚信息
     [ -d "${themes}/luci-theme-argon" ] && sed -i 's/b,strong{font-weight:bolder}/b,strong{font-weight:bolder}em, i {font-style: normal !important;}/' ${themes}/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
