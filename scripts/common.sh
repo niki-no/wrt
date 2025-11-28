@@ -109,6 +109,7 @@ applications=feeds/luci/applications
 if [ "$REPO_NAME" = "lede" ]; then
     defaultsettings=package/lean/default-settings
     package_etc=package/base-files/files/etc
+    
     sed -i '/aria2.lua/,/samba4.json/d' "${defaultsettings}/files/zzz-default-settings"
     sed -i 's/LEDE /LEDE Build By ViS0N /' "${defaultsettings}/files/zzz-default-settings"
     sed -i 's/%D %V, %C/%D %V, %C, Build By ViS0N/g' "${package_etc}/banner"
@@ -125,6 +126,7 @@ if [ "$REPO_NAME" = "lede" ]; then
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
+    
     sed -i "s/[0-9]\{4\}\.[0-9]\{2\}\.[0-9]\{2\}/$(date +%Y.%m.%d)/g" "${package_etc}/banner"
     sed -i "s/%D %V %C/%D Build By ViS0N R%V/g" "${package_etc}/openwrt_release"
 
@@ -137,6 +139,8 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
     [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"Vlmcsd KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
     [ -d "${applications}/luci-app-upnp" ] && sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "UPnP服务"/g' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
+    [ -d "${applications}/luci-app-hd-idle" ] && grep -rl 'nas' ${applications}/luci-app-hd-idle | xargs -r sed -i 's/nas/services/g'
+    [ -d "${applications}/luci-app-minidlna" ] && grep -rl 'nas' ${applications}/luci-app-minidlna | xargs -r sed -i 's/nas/services/g'
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
