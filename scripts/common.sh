@@ -42,7 +42,6 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-ttyd" ] && sed -i 's/msgstr "命令"/msgstr "命令终端"/g' ${applications}/luci-app-ttyd/po/zh_Hans/ttyd.po
 [ -d "${applications}/luci-app-tcpdump" ] && sed -i 's/"Tcpdump 流量监控"/"流量截取"/g' ${applications}/luci-app-tcpdump/po/zh_Hans/tcpdump.po
 [ -d "${applications}/luci-app-argon-config" ] && sed -i '/msgid "Argon Config"/{n;s/"Argon 主题设置"/"主题设置"/;}' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
-[ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
 
 # 调整菜单顺序（避免冲突）
 [ -d "${applications}/luci-app-filetransfer" ] && sed -i 's/89/88/g' ${applications}/luci-app-filetransfer/luasrc/controller/filetransfer.lua
@@ -122,6 +121,7 @@ if [ "$REPO_NAME" = "lede" ]; then
 
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
+    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
@@ -135,6 +135,7 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
 
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/挂载 SMB 网络共享/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
+    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"Vlmcsd KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
