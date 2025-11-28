@@ -35,7 +35,6 @@ applications=feeds/luci/applications
 # 通用应用
 [ -d "${applications}/luci-app-diag-core" ] && sed -i 's/msgstr "诊断"/msgstr "网络诊断"/g' ${applications}/luci-app-diag-core/po/zh_Hans/diag_core.po
 [ -d "${applications}/luci-app-socat" ] && sed -i 's/msgstr "Socat"/msgstr "端口转发"/g' ${applications}/luci-app-socat/po/zh_Hans/socat.po
-[ -d "${applications}/luci-app-upnp" ] && sed -i '/msgid "UPnP"/{n;s/"UPnP"/"UPnP服务"/;}' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
 [ -d "${applications}/luci-app-mwan3" ] && sed -i 's/msgstr "MultiWAN 管理器"/msgstr "负载均衡"/g' ${applications}/luci-app-mwan3/po/zh_Hans/mwan3.po
 [ -d "${applications}/luci-app-opkg" ] && sed -i 's/msgstr "软件包"/msgstr "软件管理"/g' ${applications}/luci-app-opkg/po/zh_Hans/opkg.po
 [ -d "${applications}/luci-app-turboacc" ] && sed -i 's/msgstr "Turbo ACC 网络加速"/msgstr "网络加速"/g' ${applications}/luci-app-turboacc/po/zh_Hans/turboacc.po
@@ -122,6 +121,7 @@ if [ "$REPO_NAME" = "lede" ]; then
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
     [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
+    [ -d "${applications}/luci-app-upnp" ] && sed -i '/msgid "UPnP"/{n;s/"UPnP"/"UPnP服务"/;}' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_etc=package/base-files/files/etc
@@ -136,6 +136,7 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/挂载 SMB 网络共享/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
     [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"Vlmcsd KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
+    [ -d "${applications}/luci-app-upnp" ] && sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "UPnP服务"/g' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
     echo "暂无"
