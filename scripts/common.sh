@@ -120,7 +120,7 @@ if [ "$REPO_NAME" = "lede" ]; then
     [ -d "${themes}/luci-theme-argon" ] && sed -i '/Powered by {{ version.luciname }}.*<\/a>/a\				<span class="footer-separator">|<\/span>\n\n				<a href="https:\/\/github.com\/niki-no\/wrt" target="_blank"> LEDE Build By ViS0N<\/a>' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer.ut
     [ -d "${themes}/luci-theme-argon" ] && sed -i 's#({{ version.luciversion }})</a>#&\n\t\t<a href="https://github.com/fuckactions/OpenWrt" target="_blank">LEDE Build By ViS0N</a>#' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer_login.ut
 
-    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
@@ -133,7 +133,7 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     [ -d "${themes}/luci-theme-argon" ] && sed -i '/Powered by {{ version.luciname }}.*<\/a>/a\				<span class="footer-separator">|<\/span>\n\n				<a href="https:\/\/github.com\/niki-no\/wrt" target="_blank"> ImmortalWrt Build By ViS0N<\/a>' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer.ut
     [ -d "${themes}/luci-theme-argon" ] && sed -i 's#({{ version.luciversion }})</a>#&\n\t\t<a href="https://github.com/fuckactions/OpenWrt" target="_blank">ImmortalWrt Build By ViS0N</a>#' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer_login.ut
 
-    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/\b挂载 SMB 网络共享\b/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/挂载 SMB 网络共享/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
 
 elif [ "$REPO_NAME" = "openwrt" ]; then
