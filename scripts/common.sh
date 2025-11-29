@@ -15,12 +15,12 @@ base_po=feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 sed -i '$a\\nmsgid "VPN"\nmsgstr "酷软"' ${base_po}
 sed -i '$a\\nmsgid "NAS"\nmsgstr "存储"' ${base_po}
-sed -i '/msgid "Hostnames"/{n;s/主机名/主机映射/;}' ${base_po}
-sed -i '/msgid "Administration"/{n;s/管理权/权限管理/;}' ${base_po}
-sed -i '/msgid "Software"/{n;s/软件包/软件管理/;}' ${base_po}
-sed -i '/msgid "Startup"/{n;s/启动项/启动管理/;}' ${base_po}
-sed -i '/msgid "Mount Points"/{n;s/挂载点/挂载路径/;}' ${base_po}
-sed -i '/msgid "Reboot"/{n;s/重启/立即重启/;}' ${base_po}
+sed -i '/msgid "Hostnames"/{n;s/msgstr "主机名"/msgstr "主机映射"/;}' ${base_po}
+sed -i '/msgid "Administration"/{n;s/msgstr "管理权"/msgstr "权限管理"/;}' ${base_po}
+sed -i '/msgid "Software"/{n;s/msgstr "软件包"/msgstr "软件管理"/;}' ${base_po}
+sed -i '/msgid "Startup"/{n;s/msgstr "启动项"/msgstr "启动管理"/;}' ${base_po}
+sed -i '/msgid "Mount Points"/{n;s/msgstr "挂载点"/msgstr "挂载路径"/;}' ${base_po}
+sed -i '/msgid "Reboot"/{n;s/msgstr "重启"/msgstr "立即重启"/;}' ${base_po}
 sed -i 's/msgstr "备份与升级"/msgstr "备份\/升级"/g' ${base_po}
 sed -i 's/msgstr "DHCP\/DNS"/msgstr "DHCP服务"/g' ${base_po}
 
@@ -40,15 +40,15 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-opkg" ] && sed -i 's/msgstr "软件包"/msgstr "软件管理"/g' ${applications}/luci-app-opkg/po/zh_Hans/opkg.po
 [ -d "${applications}/luci-app-turboacc" ] && sed -i 's/msgstr "Turbo ACC 网络加速"/msgstr "网络加速"/g' ${applications}/luci-app-turboacc/po/zh_Hans/turboacc.po
 [ -d "${applications}/luci-app-ttyd" ] && sed -i 's/msgstr "命令"/msgstr "命令终端"/g' ${applications}/luci-app-ttyd/po/zh_Hans/ttyd.po
-[ -d "${applications}/luci-app-tcpdump" ] && sed -i 's/"Tcpdump 流量监控"/"流量截取"/g' ${applications}/luci-app-tcpdump/po/zh_Hans/tcpdump.po
-[ -d "${applications}/luci-app-argon-config" ] && sed -i '/msgid "Argon Config"/{n;s/"Argon 主题设置"/"主题设置"/;}' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
+[ -d "${applications}/luci-app-tcpdump" ] && sed -i 's/msgstr "Tcpdump 流量监控"/msgstr "流量截取"/g' ${applications}/luci-app-tcpdump/po/zh_Hans/tcpdump.po
+[ -d "${applications}/luci-app-argon-config" ] && sed -i '/msgid "Argon Config"/{n;s/msgstr "Argon 主题设置"/msgstr "主题设置"/;}' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
 
 # 调整菜单顺序（避免冲突）
 [ -d "${applications}/luci-app-filetransfer" ] && sed -i 's/89/88/g' ${applications}/luci-app-filetransfer/luasrc/controller/filetransfer.lua
 
 # miniDLNA
 [ -d "${applications}/luci-app-minidlna" ] && sed -i "s/miniDLNA Settings/DLNA设置/" ${applications}/luci-app-minidlna/htdocs/luci-static/resources/view/minidlna.js
-[ -d "${applications}/luci-app-minidlna" ] && sed -i '/msgid "miniDLNA"/{n;s/"miniDLNA"/"DLNA服务"/;}' ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
+[ -d "${applications}/luci-app-minidlna" ] && sed -i '/msgid "miniDLNA"/{n;s/msgstr "miniDLNA"/msgstr "DLNA服务"/;}' ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
 [ -d "${applications}/luci-app-minidlna" ] && echo -e "\nmsgid \"miniDLNA Settings\"\nmsgstr \"DLNA设置\"" >> ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
 
 # ARP绑定
@@ -59,15 +59,15 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/44/43/g' ${applications}/luci-app-usb-printer/luasrc/controller/usb_printer.lua
 [ -d "${applications}/luci-app-usb-printer" ] && grep -rl 'nas' ${applications}/luci-app-usb-printer | xargs -r sed -i 's/nas/services/g'
 [ -d "${applications}/luci-app-usb-printer" ] && grep -rl 'NAS' ${applications}/luci-app-usb-printer | xargs -r sed -i 's/NAS/Services/g'
-[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/"USB 打印服务器"/"打印服务"/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
-[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/"网络存储"/"存储"/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
+[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/msgstr "USB 打印服务器"/msgstr "打印服务"/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
+[ -d "${applications}/luci-app-usb-printer" ] && sed -i 's/msgstr "网络存储"/msgstr "存储"/g' ${applications}/luci-app-usb-printer/po/zh_Hans/luci-app-usb-printer.po
 
 # 带宽监控
-[ -d "${applications}/luci-app-nlbwmon" ] && sed -i 's/"带宽监控"/"监控"/g' ${applications}/luci-app-nlbwmon/po/zh_Hans/nlbwmon.po
+[ -d "${applications}/luci-app-nlbwmon" ] && sed -i 's/msgstr "带宽监控"/msgstr "监控"/g' ${applications}/luci-app-nlbwmon/po/zh_Hans/nlbwmon.po
 [ -d "${applications}/luci-app-nlbwmon" ] && sed -i 's/admin\/services\/nlbw/admin\/nlbw/g' ${applications}/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 
 # 菜单分类调整（批量替换 services 路径）
-[ -d "${applications}/luci-app-oaf" ] && grep -rl 'services' ${applications}/luci-app-oaf | xargs -r sed -i 's/services\control/g'
+[ -d "${applications}/luci-app-oaf" ] && grep -rl 'services' ${applications}/luci-app-oaf | xargs -r sed -i 's/services/control/g'
 
 [ -d "${applications}/luci-app-wechatpush" ] && grep -rl 'services' ${applications}/luci-app-wechatpush | xargs -r sed -i 's/services/vpn/g'
 
@@ -76,7 +76,7 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-zerotier" ] && sed -i 's/msgstr "ZeroTier"/msgstr "内网穿透"/g' ${applications}/luci-app-zerotier/po/zh_Hans/zerotier.po
 [ -d "${applications}/luci-app-zerotier" ] && grep -rl 'services' ${applications}/luci-app-zerotier | xargs -r sed -i 's/services/vpn/g'
 
-[ -d "${applications}/luci-app-accesscontrol" ] && sed -i 's/"上网时间控制"/"时间控制"/g' ${applications}/luci-app-accesscontrol/po/zh_Hans/mia.po
+[ -d "${applications}/luci-app-accesscontrol" ] && sed -i 's/msgstr "上网时间控制"/msgstr "时间控制"/g' ${applications}/luci-app-accesscontrol/po/zh_Hans/mia.po
 [ -d "${applications}/luci-app-accesscontrol" ] && grep -rl 'services' ${applications}/luci-app-accesscontrol | xargs -r sed -i 's/services/control/g'
 
 [ -d "${applications}/luci-app-unblockneteasemusic" ] && sed -i 's/解除网易云音乐播放限制/网易音乐/g' ${applications}/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
@@ -86,12 +86,12 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-watchcat" ] && sed -i 's/msgstr "Watchcat"/msgstr "智能重启"/g' ${applications}/luci-app-watchcat/po/zh_Hans/watchcat.po
 
 # PassWall
-[ -d "${applications}/luci-app-passwall" ] && sed -i '/msgid "Pass Wall"/{n;s/"PassWall"/"翻越长城"/;}' ${applications}/luci-app-passwall/po/zh_Hans/passwall.po
+[ -d "${applications}/luci-app-passwall" ] && sed -i '/msgid "Pass Wall"/{n;s/msgstr "PassWall"/msgstr "翻越长城"/;}' ${applications}/luci-app-passwall/po/zh_Hans/passwall.po
 [ -d "${applications}/luci-app-passwall" ] && sed -i '/Pass Wall/s/-1/4/g' ${applications}/luci-app-passwall/luasrc/controller/passwall.lua
 [ -d "${applications}/luci-app-passwall" ] && grep -rl 'services' ${applications}/luci-app-passwall | xargs -r sed -i 's/services/vpn/g'
 
 # SmartDNS
-[ -d "${applications}/luci-app-smartdns" ] && sed -i '/msgid "SmartDNS"/{n;s/"SmartDNS"/"DNS 加速"/;}' ${applications}/luci-app-smartdns/po/zh_Hans/smartdns.po
+[ -d "${applications}/luci-app-smartdns" ] && sed -i '/msgid "SmartDNS"/{n;s/msgstr "SmartDNS"/msgstr "DNS 加速"/;}' ${applications}/luci-app-smartdns/po/zh_Hans/smartdns.po
 [ -d "${applications}/luci-app-smartdns" ] && grep -rl 'services' ${applications}/luci-app-smartdns | xargs -r sed -i 's/services/vpn/g'
 
 # Lucky
@@ -120,10 +120,10 @@ if [ "$REPO_NAME" = "lede" ]; then
     [ -d "${themes}/luci-theme-argon" ] && sed -i '/Powered by {{ version.luciname }}.*<\/a>/a\				<span class="footer-separator">|<\/span>\n\n				<a href="https:\/\/github.com\/niki-no\/wrt" target="_blank"> LEDE Build By ViS0N<\/a>' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer.ut
     [ -d "${themes}/luci-theme-argon" ] && sed -i 's#({{ version.luciversion }})</a>#&\n\t\t<a href="https://github.com/fuckactions/OpenWrt" target="_blank">LEDE Build By ViS0N</a>#' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer_login.ut
 
-    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/"挂载 SMB 网络共享"/"挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/msgstr "挂载 SMB 网络共享"/msgstr "挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
-    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
-    [ -d "${applications}/luci-app-upnp" ] && sed -i '/msgid "UPnP"/{n;s/"UPnP"/"UPnP服务"/;}' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
+    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
+    [ -d "${applications}/luci-app-upnp" ] && sed -i '/msgid "UPnP"/{n;s/msgstr "UPnP"/msgstr "UPnP服务"/;}' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_files=package/base-files/files
@@ -138,9 +138,9 @@ elif [ "$REPO_NAME" = "immortalwrt" ]; then
     [ -d "${themes}/luci-theme-argon" ] && sed -i '/Powered by {{ version.luciname }}.*<\/a>/a\				<span class="footer-separator">|<\/span>\n\n				<a href="https:\/\/github.com\/niki-no\/wrt" target="_blank"> ImmortalWrt Build By ViS0N<\/a>' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer.ut
     [ -d "${themes}/luci-theme-argon" ] && sed -i 's#({{ version.luciversion }})</a>#&\n\t\t<a href="https://github.com/fuckactions/OpenWrt" target="_blank">ImmortalWrt Build By ViS0N</a>#' ${themes}/luci-theme-argon/ucode/template/themes/argon/footer_login.ut
 
-    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/挂载 SMB 网络共享/挂载 SMB/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
+    [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/msgstr "挂载 SMB 网络共享"/msgstr "挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs-mount.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/root/usr/share/luci/menu.d/luci-app-autoreboot.json
-    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/"Vlmcsd KMS 服务器"/"KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
+    [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/msgstr "Vlmcsd KMS 服务器"/msgstr "KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
     [ -d "${applications}/luci-app-upnp" ] && sed -i 's/msgstr "UPnP IGD 和 PCP"/msgstr "UPnP服务"/g' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
     [ -d "${applications}/luci-app-hd-idle" ] && grep -rl 'nas' ${applications}/luci-app-hd-idle | xargs -r sed -i 's/nas/services/g'
     [ -d "${applications}/luci-app-minidlna" ] && grep -rl 'nas' ${applications}/luci-app-minidlna | xargs -r sed -i 's/nas/services/g'
