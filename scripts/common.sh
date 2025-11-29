@@ -15,12 +15,12 @@ base_po=feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 sed -i '$a\\nmsgid "VPN"\nmsgstr "酷软"' ${base_po}
 sed -i '$a\\nmsgid "NAS"\nmsgstr "存储"' ${base_po}
-sed -i '/msgid "Hostnames"/{n;s/msgstr "主机名"/msgstr "主机映射"/;}' ${base_po}
-sed -i '/msgid "Administration"/{n;s/msgstr "管理权"/msgstr "权限管理"/;}' ${base_po}
-sed -i '/msgid "Software"/{n;s/msgstr "软件包"/msgstr "软件管理"/;}' ${base_po}
-sed -i '/msgid "Startup"/{n;s/msgstr "启动项"/msgstr "启动管理"/;}' ${base_po}
-sed -i '/msgid "Mount Points"/{n;s/msgstr "挂载点"/msgstr "挂载路径"/;}' ${base_po}
-sed -i '/msgid "Reboot"/{n;s/msgstr "重启"/msgstr "立即重启"/;}' ${base_po}
+sed -i 's/msgstr "主机名映射"/msgstr "主机映射"/g' ${base_po}
+sed -i 's/msgstr "管理权"/msgstr "权限管理"/g' ${base_po}
+sed -i 's/msgstr "软件包"/msgstr "软件管理"/g' ${base_po}
+sed -i 's/msgstr "启动项"/msgstr "启动管理"/g' ${base_po}
+sed -i 's/msgstr "挂载点"/msgstr "挂载路径"/g' ${base_po}
+sed -i 's/msgstr "重启"/msgstr "立即重启"/g' ${base_po}
 sed -i 's/msgstr "备份与升级"/msgstr "备份\/升级"/g' ${base_po}
 sed -i 's/msgstr "DHCP\/DNS"/msgstr "DHCP服务"/g' ${base_po}
 
@@ -41,14 +41,14 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-turboacc" ] && sed -i 's/msgstr "Turbo ACC 网络加速"/msgstr "网络加速"/g' ${applications}/luci-app-turboacc/po/zh_Hans/turboacc.po
 [ -d "${applications}/luci-app-ttyd" ] && sed -i 's/msgstr "命令"/msgstr "命令终端"/g' ${applications}/luci-app-ttyd/po/zh_Hans/ttyd.po
 [ -d "${applications}/luci-app-tcpdump" ] && sed -i 's/msgstr "Tcpdump 流量监控"/msgstr "流量截取"/g' ${applications}/luci-app-tcpdump/po/zh_Hans/tcpdump.po
-[ -d "${applications}/luci-app-argon-config" ] && sed -i '/msgid "Argon Config"/{n;s/msgstr "Argon 主题设置"/msgstr "主题设置"/;}' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
+[ -d "${applications}/luci-app-argon-config" ] && sed -i 's/msgstr "Argon 主题设置"/msgstr "主题设置"/g' ${applications}/luci-app-argon-config/po/zh_Hans/argon-config.po
 
 # 调整菜单顺序（避免冲突）
 [ -d "${applications}/luci-app-filetransfer" ] && sed -i 's/89/88/g' ${applications}/luci-app-filetransfer/luasrc/controller/filetransfer.lua
 
 # miniDLNA
-[ -d "${applications}/luci-app-minidlna" ] && sed -i "s/miniDLNA Settings/DLNA设置/" ${applications}/luci-app-minidlna/htdocs/luci-static/resources/view/minidlna.js
-[ -d "${applications}/luci-app-minidlna" ] && sed -i '/msgid "miniDLNA"/{n;s/msgstr "miniDLNA"/msgstr "DLNA服务"/;}' ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
+[ -d "${applications}/luci-app-minidlna" ] && sed -i 's/miniDLNA Settings/DLNA设置/' ${applications}/luci-app-minidlna/htdocs/luci-static/resources/view/minidlna.js
+[ -d "${applications}/luci-app-minidlna" ] && sed -i 's/msgstr "miniDLNA"/msgstr "DLNA服务"/g' ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
 [ -d "${applications}/luci-app-minidlna" ] && echo -e "\nmsgid \"miniDLNA Settings\"\nmsgstr \"DLNA设置\"" >> ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
 
 # ARP绑定
@@ -86,12 +86,12 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-watchcat" ] && sed -i 's/msgstr "Watchcat"/msgstr "智能重启"/g' ${applications}/luci-app-watchcat/po/zh_Hans/watchcat.po
 
 # PassWall
-[ -d "${applications}/luci-app-passwall" ] && sed -i '/msgid "Pass Wall"/{n;s/msgstr "PassWall"/msgstr "翻越长城"/;}' ${applications}/luci-app-passwall/po/zh_Hans/passwall.po
+[ -d "${applications}/luci-app-passwall" ] && sed -i 's/msgstr "PassWall"/msgstr "翻越长城"/g' ${applications}/luci-app-passwall/po/zh_Hans/passwall.po
 [ -d "${applications}/luci-app-passwall" ] && sed -i '/Pass Wall/s/-1/4/g' ${applications}/luci-app-passwall/luasrc/controller/passwall.lua
 [ -d "${applications}/luci-app-passwall" ] && grep -rl 'services' ${applications}/luci-app-passwall | xargs -r sed -i 's/services/vpn/g'
 
 # SmartDNS
-[ -d "${applications}/luci-app-smartdns" ] && sed -i '/msgid "SmartDNS"/{n;s/msgstr "SmartDNS"/msgstr "DNS 加速"/;}' ${applications}/luci-app-smartdns/po/zh_Hans/smartdns.po
+[ -d "${applications}/luci-app-smartdns" ] && sed -i 's/msgstr "SmartDNS"/msgstr "DNS 加速"/g' ${applications}/luci-app-smartdns/po/zh_Hans/smartdns.po
 [ -d "${applications}/luci-app-smartdns" ] && grep -rl 'services' ${applications}/luci-app-smartdns | xargs -r sed -i 's/services/vpn/g'
 
 # Lucky
@@ -123,7 +123,7 @@ if [ "$REPO_NAME" = "lede" ]; then
     [ -d "${applications}/luci-app-cifs-mount" ] && sed -i 's/msgstr "挂载 SMB 网络共享"/msgstr "挂载 SMB"/g' ${applications}/luci-app-cifs-mount/po/zh_Hans/cifs.po
     [ -d "${applications}/luci-app-autoreboot" ] && sed -i 's/88/89/g' ${applications}/luci-app-autoreboot/luasrc/controller/autoreboot.lua
     [ -d "${applications}/luci-app-vlmcsd" ] && sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 服务"/g' ${applications}/luci-app-vlmcsd/po/zh_Hans/vlmcsd.po
-    [ -d "${applications}/luci-app-upnp" ] && sed -i '/msgid "UPnP"/{n;s/msgstr "UPnP"/msgstr "UPnP服务"/;}' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
+    [ -d "${applications}/luci-app-upnp" ] && sed -i 's/msgstr "UPnP"/msgstr "UPnP服务"/g' ${applications}/luci-app-upnp/po/zh_Hans/upnp.po
 
 elif [ "$REPO_NAME" = "immortalwrt" ]; then
     package_files=package/base-files/files
