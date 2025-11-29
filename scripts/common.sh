@@ -14,6 +14,7 @@ sed -i '/export ENV=\/etc\/shinit/a\LANG=zh_CN.UTF-8\nLC_ALL=zh_CN.UTF-8' packag
 base_po=feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 sed -i '$a\\nmsgid "VPN"\nmsgstr "酷软"' ${base_po}
+sed -i '$a\\nmsgid "NAS"\nmsgstr "存储"' ${base_po}
 sed -i '/msgid "Hostnames"/{n;s/主机名/主机映射/;}' ${base_po}
 sed -i '/msgid "Administration"/{n;s/管理权/权限管理/;}' ${base_po}
 sed -i '/msgid "Software"/{n;s/软件包/软件管理/;}' ${base_po}
