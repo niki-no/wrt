@@ -22,6 +22,7 @@ sed -i 's/msgstr "启动项"/msgstr "启动管理"/g' ${base_po}
 sed -i 's/msgstr "挂载点"/msgstr "挂载路径"/g' ${base_po}
 sed -i 's/msgstr "重启"/msgstr "立即重启"/g' ${base_po}
 sed -i 's/msgstr "备份与升级"/msgstr "备份\/升级"/g' ${base_po}
+sed -i 's/msgstr "备份与更新"/msgstr "备份\/升级"/g' ${base_po}
 sed -i 's/msgstr "DHCP\/DNS"/msgstr "DHCP服务"/g' ${base_po}
 
 # --- 主题美化 ---
