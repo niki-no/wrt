@@ -46,6 +46,9 @@ applications=feeds/luci/applications
 # 调整菜单顺序（避免冲突）
 [ -d "${applications}/luci-app-filetransfer" ] && sed -i 's/89/88/g' ${applications}/luci-app-filetransfer/luasrc/controller/filetransfer.lua
 
+# 软件管理
+[ -d "${applications}/luci-app-package-manager" ] && sed -i 's/msgstr "软件包"/msgstr "软件管理"/g' ${applications}/luci-app-package-manager/po/zh_Hans/package-manager.po
+
 # miniDLNA
 [ -d "${applications}/luci-app-minidlna" ] && sed -i 's/miniDLNA Settings/DLNA设置/' ${applications}/luci-app-minidlna/htdocs/luci-static/resources/view/minidlna.js
 [ -d "${applications}/luci-app-minidlna" ] && sed -i 's/msgstr "miniDLNA"/msgstr "DLNA服务"/g' ${applications}/luci-app-minidlna/po/zh_Hans/minidlna.po
