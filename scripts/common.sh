@@ -83,6 +83,8 @@ applications=feeds/luci/applications
 [ -d "${applications}/luci-app-accesscontrol" ] && sed -i 's/msgstr "上网时间控制"/msgstr "时间控制"/g' ${applications}/luci-app-accesscontrol/po/zh_Hans/mia.po
 [ -d "${applications}/luci-app-accesscontrol" ] && grep -rl 'services' ${applications}/luci-app-accesscontrol | xargs -r sed -i 's/services/control/g'
 
+[ -d "${applications}/luci-app-timecontrol" ] && sed -i 's/msgstr "上网时间控制"/msgstr "时间控制"/g' ${applications}/luci-app-timecontrol/po/zh-cn/timecontrol.po
+
 [ -d "${applications}/luci-app-unblockneteasemusic" ] && sed -i 's/解除网易云音乐播放限制/网易音乐/g' ${applications}/luci-app-unblockneteasemusic/root/usr/share/luci/menu.d/luci-app-unblockneteasemusic.json
 [ -d "${applications}/luci-app-unblockneteasemusic" ] && grep -rl 'services' ${applications}/luci-app-unblockneteasemusic | xargs -r sed -i 's/services/vpn/g'
 
