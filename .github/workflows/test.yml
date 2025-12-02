@@ -175,26 +175,57 @@ jobs:
         timeout-minutes: 10
         run: |
           cd OpenWrt
+          echo "🔧 步骤 1: 运行 make defconfig 并检查 .config 是否启用 iptables"
           make defconfig 2>/dev/null
+
+          if grep -q "^CONFIG_PACKAGE_iptables=y" .config; then
+            echo "⚠️ 警告：.config 中已自动启用 iptables 相关组件！"
+            grep "^CONFIG_PACKAGE.*iptables" .config || true
+          else
+            echo "✅ .config 中未直接启用 iptables"
+          fi
+
+          echo -e "\n🔍 步骤 2 & 3: 使用 make DUMP=1 分析依赖链，查找引入 iptables 的包..."
+          echo "正在扫描所有已选中的软件包依赖..."
+
           make V=0 DUMP=1 2>/dev/null | awk '
-          BEGIN { in_pkg = 0; pkg = ""; deps = "" }
+          BEGIN {
+            pkg = ""
+            in_pkg = 0
+            found = 0
+          }
+
           /^Package:/ {
-              if (pkg != "" && deps ~ /\<iptables\>/) {
-                  print "包 " pkg " 隐式引入 iptables"
-              }
-              pkg = $2; deps = ""; in_pkg = 1; next
+            if (pkg != "" && deps ~ /\<iptables\>/) {
+              print "📦 包 \"" pkg "\" 隐式依赖 iptables"
+              found = 1
+            }
+            pkg = $2
+            deps = ""
+            in_pkg = 1
+            next
           }
+
           in_pkg && /^Depends:/ {
-              deps = $0; next
+            deps = $0
+            next
           }
+
           in_pkg && /^[^ \t]/ {
-              if (deps ~ /\<iptables\>/) {
-                  print "包 " pkg " 隐式引入 iptables"
-              }
-              pkg = ""; deps = ""; in_pkg = 0
+            if (deps ~ /\<iptables\>/) {
+              print "📦 包 \"" pkg "\" 隐式依赖 iptables"
+              found = 1
+            }
+            pkg = ""
+            in_pkg = 0
           }
+
           END {
-              if (pkg != "" && deps ~ /\<iptables\>/) {
-                  print "包 " pkg " 隐式引入 iptables"
-              }
+            if (pkg != "" && deps ~ /\<iptables\>/) {
+              print "📦 包 \"" pkg "\" 隐式依赖 iptables"
+              found = 1
+            }
+            if (found == 0) {
+              print "✅ 未发现任何已启用的包依赖 iptables"
+            }
           }'
