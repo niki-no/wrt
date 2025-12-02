@@ -15,6 +15,7 @@ base_po=feeds/luci/modules/luci-base/po/zh_Hans/base.po
 
 sed -i '$a\\nmsgid "VPN"\nmsgstr "酷软"' ${base_po}
 sed -i '$a\\nmsgid "NAS"\nmsgstr "存储"' ${base_po}
+sed -i '$a\\nmsgid "Control"\nmsgstr "管控"' ${base_po}
 sed -i 's/msgstr "主机名映射"/msgstr "主机映射"/g' ${base_po}
 sed -i 's/msgstr "管理权"/msgstr "权限管理"/g' ${base_po}
 sed -i 's/msgstr "软件包"/msgstr "软件管理"/g' ${base_po}
