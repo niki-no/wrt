@@ -195,7 +195,7 @@ jobs:
             chmod +x wrt/${{ env.ARCH_NAME }}/$CUSTOM_SH
             /bin/bash "wrt/${{ env.ARCH_NAME }}/$CUSTOM_SH"
           fi
-          mv wrt/scripts/$CONFIG_FILE .config
+          mv wrt/config.diff/${{ env.REPO_NAME }} .config
           if [ -f "wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE" ]; then
             echo >> .config
             cat wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE >> .config
