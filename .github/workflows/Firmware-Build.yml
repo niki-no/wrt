@@ -15,12 +15,10 @@ on:
         type: choice
         options: ['lede', 'immortalwrt', 'openwrt']
       ARCH:
-        description: '输入架构 (例如: x86-64,ac58u)'
+        description: '输入架构 (例如: lean-x86-64 immortalwrt-immo-x86-64)'
         default: ''
         type: string
         
-  #schedule:
-  #  - cron: "5 19 * * *"
   watch:
     types: started
 
@@ -120,7 +118,6 @@ jobs:
           echo "REPO_URL=${REPO_URL}" >> $GITHUB_ENV
           echo "REPO_BRANCH=${REPO_BRANCH}" >> $GITHUB_ENV
           echo "CONFIG_FILE=${CONFIG_FILE}" >> $GITHUB_ENV
-          echo "CUSTOM_SH=${CUSTOM_SH}" >> $GITHUB_ENV
           echo "COMMON_SH=${COMMON_SH}" >> $GITHUB_ENV
           echo "ADDON_SH=${ADDON_SH}" >> $GITHUB_ENV
           echo "UPLOAD_FIRMWARE_FOR_ARTIFACT=${UPLOAD_FIRMWARE_FOR_ARTIFACT}" >> $GITHUB_ENV
@@ -145,7 +142,7 @@ jobs:
           sudo ln -s /mnt/build_wrt $GITHUB_WORKSPACE/OpenWrt
           
           git clone --depth 1 $REPO_URL -b $REPO_BRANCH OpenWrt
-          mkdir -p OpenWrt/wrt && cp -rf ${{ env.ARCH_NAME }} scripts config.diff OpenWrt/wrt/
+          mkdir -p OpenWrt/wrt && cp -rf ${{ env.ARCH_NAME }} scripts OpenWrt/wrt/
           cd OpenWrt && echo "WRT_HASH=$(git log -1 --pretty=format:'%h')" >> $GITHUB_ENV
 
           # GitHub Action 移除国内下载源
@@ -183,15 +180,7 @@ jobs:
             chmod +x wrt/scripts/$COMMON_SH
             /bin/bash "wrt/scripts/$COMMON_SH"
           fi
-          if [ -f "wrt/${{ env.ARCH_NAME }}/$CUSTOM_SH" ]; then
-            chmod +x wrt/${{ env.ARCH_NAME }}/$CUSTOM_SH
-            /bin/bash "wrt/${{ env.ARCH_NAME }}/$CUSTOM_SH"
-          fi
-          mv wrt/config.diff/${{ env.REPO_NAME }} .config
-          if [ -f "wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE" ]; then
-            echo >> .config
-            cat wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE >> .config
-          fi
+          mv wrt/${{ env.ARCH_NAME }}/$CONFIG_FILE .config
 
       - name: 应用补丁
         run: |
