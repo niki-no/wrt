@@ -1,4 +1,4 @@
-#固件的名字可以是一个或多个(多个用英文逗号或分号或空格隔开)，例如：x86-64 ac58u 或 lede-x86-64 immortalwrt-x86-64 或 immortalwrt-ac58u immortalwrt-x86-64 lede-x86-64 ac58u
+#固件的名字可以是一个或多个(多个用英文逗号或分号或空格隔开)，例如：lean-x86-64 immo-x86-64 或 lede-lean-x86-64 immortalwrt-immo-x86-64 或 lean-x86-64 immortalwrt-immo-x86-64
 #固件的名字如果不带仓库名，如果不使用选项默认用lede仓库
 #仓库名为：lede immortalwrt openwrt
 #架构名为(设备名)：lean-x86-64 immo-x86-64等，名随意取，只要能区分设备
