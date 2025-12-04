@@ -9,11 +9,11 @@
 在线Github Actions编译Openwrt、Lean和Immortalwrt仓库固件，同步使用上游最新源码！
 如需同时编译多个固件，需要两个步骤：
 
-1. 在仓库根目录放置配置文件夹（可参考AC58U或x86-64文件夹）
+1. 在仓库根目录放置配置文件夹（可参考lean-x86-64或immo-x86-64文件夹）
 
 2. 修改Build-OpenWrt文件,把固件名字写入Build-OpenWrt（注意固件名格式）点击Run workflow按钮开始编译；或在Actions页面，点击Run workflow选项，在输入框写入固件名（多个固件名用空格隔开），再点击Run workflow按钮开始编译
 
-3. 增减插件需自行修改scripts/addon.sh和config.diff目录下相关文件
+3. 增减插件需自行修改scripts/addon.sh和配置文件夹下config.diff文件
 
 ## ⚠️ 警告⚠️ 
 
