@@ -87,8 +87,8 @@ git_clone https://github.com/jerrykuku/luci-app-argon-config luci-app-argon-conf
 git_clone https://github.com/tty228/luci-app-wechatpush luci-app-wechatpush && rm -rf luci-app-wechatpush/{.git,.github} && mv luci-app-wechatpush mypackages
 git_clone https://github.com/KFERMercer/luci-app-tcpdump luci-app-tcpdump && rm -rf luci-app-tcpdump/{.git,.github} && mv luci-app-tcpdump mypackages
 
-git_sparse_clone https://github.com/xiaorouji/openwrt-passwall -d mypackages luci-app-passwall
-git_sparse_clone https://github.com/xiaorouji/openwrt-passwall2 -d mypackages luci-app-passwall2
+git_sparse_clone https://github.com/Openwrt-Passwall/openwrt-passwall -d mypackages luci-app-passwall
+git_sparse_clone https://github.com/Openwrt-Passwall/openwrt-passwall2 -d mypackages luci-app-passwall2
 git_sparse_clone https://github.com/gdy666/luci-app-lucky -d mypackages luci-app-lucky lucky
 git_sparse_clone https://github.com/sirpdboy/luci-app-netwizard -d mypackages luci-app-netwizard
 git_sparse_clone https://github.com/sirpdboy/luci-app-timecontrol -d mypackages luci-app-nft-timecontrol
